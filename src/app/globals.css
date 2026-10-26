@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: var(--font-cairo), "Cairo", ui-sans-serif, system-ui, sans-serif;
+
+  --color-brand-50: #fffaeb;
+  --color-brand-100: #fef0c7;
+  --color-brand-200: #fde28a;
+  --color-brand-300: #fbcd4d;
+  --color-brand-400: #f9b724;
+  --color-brand-500: #f2990b;
+  --color-brand-600: #d67706;
+  --color-brand-700: #b1570a;
+  --color-brand-800: #8f440f;
+  --color-brand-900: #753a10;
+
+  --color-ink-50: #f4f5fb;
+  --color-ink-100: #e6e8f5;
+  --color-ink-200: #c8cce9;
+  --color-ink-300: #9ca3d2;
+  --color-ink-400: #6a73b5;
+  --color-ink-500: #4a5299;
+  --color-ink-600: #383d7c;
+  --color-ink-700: #2c3063;
+  --color-ink-800: #1d2047;
+  --color-ink-900: #11122e;
+  --color-ink-950: #0a0b1f;
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-fade-up: fade-up 0.6s ease-out both;
+  --animate-glow: glow 3s ease-in-out infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-14px); }
+  }
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes glow {
+    0%, 100% { opacity: 0.55; }
+    50% { opacity: 1; }
+  }
+}
+
+:root {
+  color-scheme: light;
+  --surface: #f6f6fb;
+  --surface-card: #ffffff;
+}
+
+.dark {
+  color-scheme: dark;
+  --surface: #0a0b1f;
+  --surface-card: #12142f;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--surface);
+  color: inherit;
+}
+
+::selection {
+  background-color: var(--color-brand-300);
+  color: var(--color-ink-950);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: color-mix(in srgb, var(--color-ink-400) 50%, transparent);
+  border-radius: 999px;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.bg-grid {
+  background-image:
+    linear-gradient(to left, color-mix(in srgb, currentColor 6%, transparent) 1px, transparent 1px),
+    linear-gradient(to top, color-mix(in srgb, currentColor 6%, transparent) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.card-glass {
+  background-color: color-mix(in srgb, var(--surface-card) 78%, transparent);
+  backdrop-filter: blur(16px);
+}
